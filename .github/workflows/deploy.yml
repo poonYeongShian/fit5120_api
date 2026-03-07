@@ -5,7 +5,7 @@ on:
       - master
 
 env:
-  AWS_REGION: ap-southeast-2 # Fixed to match your screenshot
+  AWS_REGION: ap-southeast-5
   CONTAINER_NAME: fit5120api
 
 permissions:
