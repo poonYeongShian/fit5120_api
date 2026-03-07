@@ -2,7 +2,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   AWS_REGION: ap-southeast-2 # Fixed to match your screenshot
