@@ -12,9 +12,10 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<ICaqmRepository, CaqmRepository>();
 builder.Services.AddScoped<ICaqmService, CaqmService>();
-
 builder.Services.AddScoped<IAirQualityRepository, AirQualityRepository>();
 builder.Services.AddScoped<IAirQualityService, AirQualityService>();
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped<ICountryService, CountryService>();
 
 var app = builder.Build();
 
@@ -29,6 +30,6 @@ app.UseHttpsRedirection();
 
 // Endpoints
 app.MapCaqmEndpoints();
-app.MapAirQualityEndpoints();
+app.MapCountryEndpoints();
 
-app.Run();
+await app.RunAsync();
