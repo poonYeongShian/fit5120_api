@@ -7,27 +7,21 @@ public static class CountryEndpoints
 {
     public static void MapCountryEndpoints(this WebApplication app)
     {
-        app.MapGet("/api/country/{countryName}", HandleGetCountryWithStatesAsync)
+        app.MapGet("/api/country/malaysia", HandleGetCountryWithStatesAsync)
             .WithName("GetCountryWithStates")
             .WithOpenApi();
     }
 
     private static async Task<IResult> HandleGetCountryWithStatesAsync(
-        string countryName,
         ICountryService countryService)
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(countryName))
-            {
-                return Results.BadRequest("Country name cannot be empty.");
-            }
-
-            var country = await countryService.GetCountryByNameAsync(countryName);
+            var country = await countryService.GetCountryByNameAsync("Malaysia");
 
             if (country is null)
             {
-                return Results.NotFound($"Country '{countryName}' not found.");
+                return Results.NotFound($"Country 'Malaysia' not found.");
             }
 
             var states = await countryService.GetStatesByCountryIdAsync(country.Id);
