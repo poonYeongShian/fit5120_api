@@ -13,6 +13,9 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<ICaqmRepository, CaqmRepository>();
 builder.Services.AddScoped<ICaqmService, CaqmService>();
 
+builder.Services.AddScoped<IAirQualityRepository, AirQualityRepository>();
+builder.Services.AddScoped<IAirQualityService, AirQualityService>();
+
 var app = builder.Build();
 
 // Middleware
@@ -26,5 +29,6 @@ app.UseHttpsRedirection();
 
 // Endpoints
 app.MapCaqmEndpoints();
+app.MapAirQualityEndpoints();
 
 app.Run();
